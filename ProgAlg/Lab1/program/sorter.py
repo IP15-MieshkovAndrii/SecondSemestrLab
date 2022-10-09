@@ -8,8 +8,8 @@ class Reader:
     def __init__(self, path: str):
         self.path = path
         self.f = open(path, "rb")
-        self.curr = self.f.read(32)
-        self.next = self.f.read(32)
+        self.curr = self.f.read(16)
+        self.next = self.f.read(16)
 
     def close(self):
         self.f.close()
@@ -21,13 +21,13 @@ class Reader:
         """Повертає поточний покажчик і переміщує покажчики вперед на 1"""
         tmp = self.curr
         self.curr = self.next
-        self.next = self.f.read(32)
+        self.next = self.f.read(16)
         return tmp
 
 
 class Sorter:
     def __init__(self, path_a: str, path_b: str, path_c: str):
-        """File B and C is cleared, file A is not"""
+        """Файл B і C очищено, файл A – ні"""
         self.path_a = path_a
         self.path_b = path_b
         self.path_c = path_c
@@ -37,7 +37,7 @@ class Sorter:
     def generate_file(self, n: int, max_n: int):
         with open(self.path_a, "wb") as a:
             for i in range(n):
-                a.write(randint(1, max_n).to_bytes(32, byteorder="big"))
+                a.write(randint(1, max_n).to_bytes(16, byteorder="big"))
 
     def copy_file(self, path: str):
         shutil.copy(path, self.path_a)
