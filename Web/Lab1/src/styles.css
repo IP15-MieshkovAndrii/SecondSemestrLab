@@ -58,11 +58,12 @@ header, footer {
 aside, nav {
     background-color:#E4EFD5;
     padding: 2%;
-    flex: 1;
+    
 }
 
 aside {
     text-align: right;
+    flex: 1;
 }
 
 nav {
@@ -98,6 +99,7 @@ section {
     padding: 5%;
     text-align: left;
     outline: 2px solid #000;
+    flex: 1;
 }
 
 footer {
