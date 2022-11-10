@@ -15,6 +15,11 @@ header, footer {
     font-size: 30px;
     overflow: hidden;
     outline: 2px solid #000;
+    position: relative;
+}
+
+.footer p{
+    padding-left: 200px;
 }
 
 #x, #y {
@@ -27,6 +32,10 @@ header, footer {
     outline-color: black;
     outline-style: solid;
     padding-right: 2px;
+    position: absolute;
+    height: 50px;
+    top: 50%;
+    margin-top: -25px;
 }
 
 .grid-container {
