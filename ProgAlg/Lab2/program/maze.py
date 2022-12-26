@@ -18,6 +18,7 @@ def printMaze(maze, h=10, w=10):
 
 def printPath(path):
     n = 0
+    print(Fore.WHITE + "Path: ")
     for i in path:
         n += 1
         print(Fore.WHITE + f"x:{i[0]+1}, y:{i[1]+1}")

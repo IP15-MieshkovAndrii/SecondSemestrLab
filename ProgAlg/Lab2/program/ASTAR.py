@@ -1,9 +1,9 @@
-from colorama import Fore
-from curses.textpad import rectangle
+import func_timeout
 from maze import *
 from queue import PriorityQueue
 import math
 import os
+import psutil
 
 
 class AStar:
@@ -31,8 +31,10 @@ class AStar:
 
         return math.sqrt((x1-x2)**2 + (y1-y2)**2)
 
+    def search(self,m, x, y, start, end):
+        return func_timeout.func_timeout(30*60, self._search, args=[m, x, y, start, end])    
 
-    def search(self, m, x, y, start, end):
+    def _search(self, m, x, y, start, end):
         self.iterat = 0
         self.state = 0
         self.mem_st = 0
@@ -52,6 +54,8 @@ class AStar:
         aPath = {}
         states = []
         while not border.empty():
+            if psutil.Process(os.getpid()).memory_info().rss > 1024**3:
+                raise MemoryError("1 Gb memory exceeded")
             self.iterat += 1
 
             if border.qsize() > self.mem_st:

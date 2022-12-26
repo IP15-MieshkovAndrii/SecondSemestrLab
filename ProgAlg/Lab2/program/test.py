@@ -1,9 +1,7 @@
 from LDFS import LDFS
 from ASTAR import AStar
 from maze import *
-import os
-import time
-from colorama import Fore, Back, Style
+from colorama import Fore
 
 
 
@@ -14,7 +12,6 @@ class Test:
 
     def create_mazes(self, x, y):
         m = Maze(x, y)
-
 
     def test_ldfs(self, n=20):
         iterat = 0
@@ -51,7 +48,7 @@ class Test:
             m, start, end = Maze(x, y)
             self.astar.search(m, x, y, start, end)
             print(Fore.WHITE + f"Maze {x}x{y}\n"
-                    f"Iterations: {self.astar.iterat}, n of states: {self.astar.state}, max stack len: {self.astar.mem_st}, ")
+                    f"Iterations: {self.astar.iterat}, n of states: {self.astar.state}, max stack len: {self.astar.mem_st} ")
             iterat += self.astar.iterat
             state += self.astar.state
             mem_st += self.astar.mem_st
